@@ -1,0 +1,15 @@
+@model Wine
+
+@{
+    ViewData["Title"] = Model.Style;
+}
+
+<h1>@Model.Style, @Model.Vineyard, @Model.Year</h1>
+<h2>
+    Bottles Remaining: @Model.BottlesRemaining
+</h2>
+<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+<br>
+<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+<br>
+<a asp-action="Index">Back to list</a>

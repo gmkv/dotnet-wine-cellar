@@ -1,0 +1,40 @@
+@model IEnumerable<Wine>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Inventory</h1>
+<p>I should make it into responsive unordered list at some point.</p>
+<table border="2"> 
+    @foreach (var wine in Model)
+    {
+        <tr>
+            <th>Image</th>
+            <th>Style</th>
+            <th>Selling price</th>
+            <th>Buying price</th>
+            <th>Remaining bottles</th>
+            <th>Vineyard</th>
+            <th>Location</th>
+            <th>Year</th>
+            <th>Tasting notes</th>
+            <th>Page</th>
+        </tr>
+        <tr>
+            <td><img src="~/images/bottle.png" alt="Picture of a wine bottle" width="100"></td>
+            <td>@wine.Style</td>
+            <td>@wine.SellingPrice</td>
+            <td>@wine.BuyingPrice</td>
+            <td>@wine.BottlesRemaining</td>
+            <td>@wine.Vineyard</td>
+            <td>@wine.Location</td>
+            <td>@wine.Year</td>
+            <td>@wine.TastingNotes</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@wine.Id">Details</a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-action="Create">Add a new wine</a>

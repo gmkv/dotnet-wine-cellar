@@ -1,0 +1,53 @@
+@model Wine
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form method="POST">
+    <div>
+        <label asp-for="Style"></label>
+        <select asp-for="Style" asp-items="@Html.GetEnumSelectList<StyleType>()"></select><span asp-validation-for="Style"></span>
+    </div>
+
+    <div>
+        <label asp-for="SellingPrice"></label>
+        <input asp-for="SellingPrice"><span asp-validation-for="SellingPrice"></span>
+    </div>
+
+    <div>
+        <label asp-for="BuyingPrice"></label>
+        <input asp-for="BuyingPrice"><span asp-validation-for="BuyingPrice"></span>
+    </div>
+
+    <div>
+        <label asp-for="BottlesRemaining"></label>
+        <input asp-for="BottlesRemaining"><span asp-validation-for="BottlesRemaining"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Vineyard"></label>
+        <input asp-for="Vineyard"><span asp-validation-for="Vineyard"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Location"></label>
+        <input asp-for="Location"><span asp-validation-for="Location"></span>
+    </div>
+
+    
+    <div>
+        <label asp-for="Year"></label>
+        <input asp-for="Year"><span asp-validation-for="Year"></span>
+    </div>
+
+    <div>
+        <label asp-for="TastingNotes"></label>
+        <input asp-for="TastingNotes"><span asp-validation-for="TastingNotes"></span>
+    </div>
+
+    <input type="submit" name="save" class="btn btn-primary" value="Save">
+</form>
+
+<a class="btn btn-outline-secondary" asp-action="Index">Back to list</a>
