@@ -17,22 +17,10 @@ namespace gm18119
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
 
             services.AddDbContext<WineDbContext>(
                 options => options.UseSqlite("Data Source=gm18119.db"));
@@ -50,11 +38,6 @@ namespace gm18119
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
-            }
 
     /* Middlewares are usually written to look at an incoming request, or look at outgoing responses
     or trying to handle requests in some manner.
@@ -68,11 +51,11 @@ namespace gm18119
             app.UseMvc(routes =>
             {
                 // www.example.com/Controller/Action/OptionalId
-                // default is www.example.com/orders/index
+                // default is www.example.com/Inventory/index
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Inventory}/{action=Index}/{id?}");
             });
         }
     }

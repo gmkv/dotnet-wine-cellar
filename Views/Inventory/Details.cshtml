@@ -8,8 +8,18 @@
 <h2>
     Bottles Remaining: @Model.BottlesRemaining
 </h2>
-<a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-<br>
-<a asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
-<br>
-<a asp-action="Index">Back to list</a>
+<ul>
+    <li>Style: <strong>@Model.Style</strong></li>
+    <li>Selling price: <strong>@Model.SellingPrice</strong></li>
+    <li>Buying price: <strong>@Model.BuyingPrice</strong></li>
+    <li>Vineyard: <strong>@Model.Vineyard</strong></li>
+    <li>Location: <strong>@Model.Location</strong></li>
+    <li>Year: <strong>@Model.Year</strong></li>
+    <li>Tasting notes: <strong>@Model.TastingNotes</strong></li>
+</ul>
+
+<div class="btn-group" role="group" aria-label="...">
+    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    <a class="btn btn-primary" asp-action="Index">Back to list</a>
+</div>

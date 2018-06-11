@@ -5,9 +5,8 @@ namespace gm18119.Services
 {
     public interface IOrderData
     {
-        IEnumerable<Order> GetAllOrders(); // won't be fun to load 100 000 orders
-        void Process(Order order);
-
+        IEnumerable<Order> GetAllOrders();
         Order GetOrder(int id);
+        Order UpdateStatus(int id, OrderStatus newStatus);
     }
 }

@@ -15,14 +15,14 @@
     </tr>
     @foreach (var order in Model)
     {
-        <tr>
-            <th>@order.Id</th>
-            <th>@order.OrderedWineIds</th>
-            <th>@order.TotalAmountDue</th>
-            <th>@order.Status</th>
-            <td>
-                <a asp-action="Details" asp-route-id="@order.Id">Details</a>
-            </td>
-        </tr>
+    <tr>
+        <th>@order.Id</th>
+        <th>@order.OrderedWineIds</th>
+        <th>@order.TotalAmountDue</th>
+        <th>@order.Status</th>
+        <td>
+            <a asp-action="Details" asp-route-id="@order.Id">Details</a>
+        </td>
+    </tr>
     }
 </table>

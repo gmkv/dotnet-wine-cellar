@@ -5,7 +5,8 @@
 }
 
 <h1>Inventory</h1>
-<p>I should make it into responsive unordered list at some point.</p>
+<a class="btn btn-primary" asp-action="Create">Add a new wine</a>
+<hr>
 <table border="2"> 
     @foreach (var wine in Model)
     {
@@ -37,4 +38,3 @@
         </tr>
     }
 </table>
-<a asp-action="Create">Add a new wine</a>

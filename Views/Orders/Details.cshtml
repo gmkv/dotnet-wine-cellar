@@ -17,15 +17,17 @@
         </ul>
     </li>
     <li>Total amount due: @Model.Order.TotalAmountDue</li>
-    <li>Status: @Model.Order.Status</li>
+    <li>Status: <strong>@Model.Order.Status</strong></li>
 </ul>
-<form method="POST" asp-action="Proscess">
+<hr>
+<form method="POST" asp-action="Process">  
     <div>
-        <label asp-for="Style"></label>
-        <select asp-for="Style" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Style"></span>
+        <input type="hidden" asp-for="@Model.Order.Id">
+        <label asp-for="@Model.Order.Status"></label>
+        <select asp-for="@Model.Order.Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Order.Status" name="Model.Order.Status"></span>
     </div>
-    <input type="submit" name="save" value="Process">
+    <input class="btn btn-primary" type="submit" name="save" value="Change status">
 </form>
-<a asp-action="Process" asp-route-id="@Model.Order.Id">Process order</a>
-<br>
-<a asp-action="Index">Back to orders</a>
+<hr>
+
+<a class="btn btn-primary" asp-action="Index">Back to orders</a>

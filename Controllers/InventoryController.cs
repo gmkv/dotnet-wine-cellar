@@ -14,17 +14,15 @@ namespace gm18119.Controllers
     {
         private IWineData m_wineData;
 
-        // puprose of this ctor is to show asp.net which interfaces/data it needs 
+        // puprose of this ctor is to show asp.net which interfaces/data it needs injected
         public InventoryController(IWineData wineData)
         {
             m_wineData = wineData;
         }
 
+        // Index displays all wines on the inventory page
         public IActionResult Index()
         {
-            // Action Index displays all wines on the inventory page
-            // var model = new HomeIndexViewModel();
-            // model.Wines = m_wineData.GetAll(); 
             
             return View(m_wineData.GetAllWines());
         }
@@ -49,11 +47,6 @@ namespace gm18119.Controllers
         [HttpPost]
         public IActionResult Create(Wine model)
         {
-            // if (!ModelState.IsValid)
-            // {
-            //     return View();
-            // }
-
             Wine wine = m_wineData.Add(model);
             // redirect to the view so that the user won't resubmit a POST request once the view loads for them
             return RedirectToAction(nameof(Details), new { id = wine.Id });
@@ -68,7 +61,6 @@ namespace gm18119.Controllers
             {
                 return RedirectToAction(nameof(Index));
             }
-
             // return a view with the wine so the form's fields would be populated with data
             return View(wine);
         }
@@ -76,14 +68,6 @@ namespace gm18119.Controllers
         [HttpPost]
         public IActionResult Edit(Wine model)
         {
-            // if (!ModelState.IsValid)
-            // {
-            //     return View();
-            // }
-            // var wine = new Wine();
-            // wine.Name = model.Name;
-            // wine.BottlesRemaining = model.BottlesRemaining;
-            
             int oldId = model.Id;
             
             Wine wine = m_wineData.Edit(oldId, model);
@@ -105,10 +89,5 @@ namespace gm18119.Controllers
             // this is why RedirectToAction is used, rather than just returning a View
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

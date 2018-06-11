@@ -48,13 +48,19 @@ namespace gm18119.Services
             return m_context.Wines.OrderByDescending(r => r.Id);
         }
 
-        public void Process(Order order)
+        public Order UpdateStatus(int id, OrderStatus newStatus)
         {
-            // get order by Id, then change it's state to mark it as paid, cancelled, etc.
-            // var o = m_context.Orders.FirstOrDefault(r => r.Id == order.Id);
-            m_context.Orders.Update(order);
-            m_context.SaveChanges();            
+            // get order by Id, then change it's state to paid, cancelled, etc.
+            var order = m_context.Orders.FirstOrDefault(r => r.Id == id);
+            if (order == null)
+            {
+                return null;
             }
+            order.Status = newStatus;
+            m_context.Orders.Update(order);
+            m_context.SaveChanges();
+            return order;
+        }
 
         public IEnumerable<Order> GetAllOrders()
         {
