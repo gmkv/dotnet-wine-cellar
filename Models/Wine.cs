@@ -30,6 +30,8 @@ namespace gm18119.Models
         [Display(Name = "Tasting notes"), Required, MaxLength(140)]
         public string TastingNotes { get; set; }
 
+        [Display(Name = "Image name"), MaxLength(250)]
+        public string ImageName { get; set; } // Name of image file placed in "~/images/...." folder
     }
         public enum StyleType
     {

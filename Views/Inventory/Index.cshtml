@@ -11,6 +11,7 @@
     @foreach (var wine in Model)
     {
         <tr>
+            <th>ID</th>
             <th>Image</th>
             <th>Style</th>
             <th>Selling price</th>
@@ -23,7 +24,8 @@
             <th>Page</th>
         </tr>
         <tr>
-            <td><img src="~/images/bottle.png" alt="Picture of a wine bottle" width="100"></td>
+            <td>@wine.Id</td>
+            <td><img src="~/images/@wine.ImageName" alt="Picture of a wine bottle" width="150"></td>
             <td>@wine.Style</td>
             <td>@wine.SellingPrice</td>
             <td>@wine.BuyingPrice</td>
