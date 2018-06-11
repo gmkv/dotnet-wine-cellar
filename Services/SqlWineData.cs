@@ -7,7 +7,7 @@ namespace gm18119.Services
 {
     // SqlWineData provides a way to modify the state of the DB. 
     // It holds the representation of the state of the DB in a field named context.
-    public class SqlWineData : IWineData
+    public class SqlWineData : IWineData, IOrderData
     {
         private WineDbContext m_context;
 
@@ -30,12 +30,12 @@ namespace gm18119.Services
             m_context.SaveChanges();
         }
 
-        public Wine Edit(int id, Wine wine)
+        public Wine Edit(int id, Wine changedWine)
         {
-            wine.Id = id;
-            m_context.Update(wine);
+            changedWine.Id = id;
+            m_context.Update(changedWine);
             m_context.SaveChanges();
-            return wine;
+            return changedWine;
         }
 
         public Wine Get(int id)
@@ -43,9 +43,27 @@ namespace gm18119.Services
             return m_context.Wines.FirstOrDefault(r => r.Id == id);
         }
 
-        public IEnumerable<Wine> GetAll()
+        public IEnumerable<Wine> GetAllWines()
         {
             return m_context.Wines.OrderByDescending(r => r.Id);
+        }
+
+        public void Process(Order order)
+        {
+            // get order by Id, then change it's state to mark it as paid, cancelled, etc.
+            // var o = m_context.Orders.FirstOrDefault(r => r.Id == order.Id);
+            m_context.Orders.Update(order);
+            m_context.SaveChanges();            
+            }
+
+        public IEnumerable<Order> GetAllOrders()
+        {
+            return m_context.Orders.OrderByDescending(o => o.Id);
+        }
+
+        public Order GetOrder(int id)
+        {
+            return m_context.Orders.FirstOrDefault(o => o.Id == id);
         }
     }
 }

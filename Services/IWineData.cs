@@ -5,7 +5,7 @@ namespace gm18119.Services
 {
     public interface IWineData
     {
-        IEnumerable<Wine> GetAll();
+        IEnumerable<Wine> GetAllWines();
         Wine Get(int id);
         Wine Add(Wine wine);
         Wine Edit(int id, Wine wine);

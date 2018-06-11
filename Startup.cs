@@ -36,7 +36,10 @@ namespace gm18119
 
             services.AddDbContext<WineDbContext>(
                 options => options.UseSqlite("Data Source=gm18119.db"));
+            
             services.AddScoped<IWineData, SqlWineData>();
+            services.AddScoped<IOrderData, SqlWineData>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -64,8 +67,8 @@ namespace gm18119
 
             app.UseMvc(routes =>
             {
-                // /Controller/Action/OptionalId
-                // default is www.example.com/home/index
+                // www.example.com/Controller/Action/OptionalId
+                // default is www.example.com/orders/index
 
                 routes.MapRoute(
                     name: "default",

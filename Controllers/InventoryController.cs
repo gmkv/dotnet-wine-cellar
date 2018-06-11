@@ -26,7 +26,7 @@ namespace gm18119.Controllers
             // var model = new HomeIndexViewModel();
             // model.Wines = m_wineData.GetAll(); 
             
-            return View(m_wineData.GetAll());
+            return View(m_wineData.GetAllWines());
         }
     
         public IActionResult Details(int id)
@@ -109,21 +109,6 @@ namespace gm18119.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
         }
     }
 }

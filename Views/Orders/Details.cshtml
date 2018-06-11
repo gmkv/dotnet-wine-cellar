@@ -1,0 +1,31 @@
+@model OrderDetailsViewModel
+
+@{
+    ViewData["Title"] = "Order #" + Model.Order.Id;
+}
+
+<h1>Order #@Model.Order.Id</h1>
+<ul>
+    <li>
+        <ul>Purchased wines:
+            @foreach (var w in Model.PurchasedWines)
+            {
+                <li>
+                <a asp-controller="Inventory" asp-action="Details" asp-route-id="@w.Id">@w.Style, @w.Vineyard, @w.Year</a>
+                </li>
+            }
+        </ul>
+    </li>
+    <li>Total amount due: @Model.Order.TotalAmountDue</li>
+    <li>Status: @Model.Order.Status</li>
+</ul>
+<form method="POST" asp-action="Proscess">
+    <div>
+        <label asp-for="Style"></label>
+        <select asp-for="Style" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Style"></span>
+    </div>
+    <input type="submit" name="save" value="Process">
+</form>
+<a asp-action="Process" asp-route-id="@Model.Order.Id">Process order</a>
+<br>
+<a asp-action="Index">Back to orders</a>

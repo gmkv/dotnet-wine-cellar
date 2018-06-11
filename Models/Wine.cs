@@ -31,4 +31,16 @@ namespace gm18119.Models
         public string TastingNotes { get; set; }
 
     }
+        public enum StyleType
+    {
+        AromaticWhite,
+        Dessert,
+        FullBodiedRed,
+        FullBodiedWhite,
+        LightBodiedRed,
+        LightBodiedWhite,
+        MediumBodiedRed,
+        Rosé,
+        Sparkling
+    }
 }
