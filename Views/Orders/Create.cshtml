@@ -1,0 +1,26 @@
+@model Order
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+<form method="POST">
+    <div>
+        <label asp-for="OrderedWineIds"></label>
+        <input asp-for="OrderedWineIds"><span asp-validation-for="OrderedWineIds"></span>
+    </div>
+
+    <div>
+        <label asp-for="TotalAmountDue"></label>
+        <input asp-for="TotalAmountDue"><span asp-validation-for="TotalAmountDue"></span>
+    </div>
+
+    <div>
+        <label asp-for="Status"></label>
+        <select asp-for="Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Status"></span>
+    </div>
+    <input type="submit" name="save" class="btn btn-primary" value="Save">
+</form>
+<hr>
+<a class="btn btn-primary" asp-action="Index">Back to list</a>

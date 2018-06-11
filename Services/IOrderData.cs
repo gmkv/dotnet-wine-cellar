@@ -8,5 +8,6 @@ namespace gm18119.Services
         IEnumerable<Order> GetAllOrders();
         Order GetOrder(int id);
         Order UpdateStatus(int id, OrderStatus newStatus);
+        Order Add(Order model);
     }
 }

@@ -71,5 +71,14 @@ namespace gm18119.Services
         {
             return m_context.Orders.FirstOrDefault(o => o.Id == id);
         }
+
+        public Order Add(Order model)
+        {
+        
+            m_context.Orders.Add(model);
+            m_context.SaveChanges();
+            return model;
+        
+        }
     }
 }

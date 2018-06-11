@@ -62,5 +62,20 @@ namespace gm18119.Controllers
             }
             return RedirectToAction(nameof(Details), new { id = order.Id });
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Order model)
+        {
+            Order order = m_orderData.Add(model);
+            // redirect to the view so that the user won't resubmit a POST request once the view loads for them
+            return RedirectToAction(nameof(Details), new { id = order.Id });
+            // this is why RedirectToAction is used, rather than just returning a View
+        }
     }
 }
