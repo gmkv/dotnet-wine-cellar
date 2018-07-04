@@ -5,38 +5,34 @@
 }
 
 <h1>Inventory</h1>
-<a class="btn btn-primary" asp-action="Create">Add a new wine</a>
+<a class="btn btn-danger" asp-action="Create">Add a new wine</a>
 <hr>
-<table border="2"> 
-    @foreach (var wine in Model)
-    {
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Style</th>
-            <th>Selling price</th>
-            <th>Buying price</th>
-            <th>Remaining bottles</th>
-            <th>Vineyard</th>
-            <th>Location</th>
-            <th>Year</th>
-            <th>Tasting notes</th>
-            <th>Page</th>
-        </tr>
-        <tr>
-            <td>@wine.Id</td>
-            <td><img src="~/images/@wine.ImageName" alt="Picture of a wine bottle" width="150"></td>
-            <td>@wine.Style</td>
-            <td>@wine.SellingPrice</td>
-            <td>@wine.BuyingPrice</td>
-            <td>@wine.BottlesRemaining</td>
-            <td>@wine.Vineyard</td>
-            <td>@wine.Location</td>
-            <td>@wine.Year</td>
-            <td>@wine.TastingNotes</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@wine.Id">Details</a>
-            </td>
-        </tr>
-    }
-</table>
+
+<div>
+
+@foreach (var wine in Model)
+{
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+            <img class="sm img-thumbnail" src="~/images/@wine.ImageName" alt="Picture of a wine bottle">
+            <div class="caption">
+                <h3>@wine.Style, @wine.Year</h3>
+                <small>ID: @wine.Id</small>
+                <p>
+                    <ul>
+                        <li>Selling Price: @wine.SellingPrice</li>
+                        <li>Buying Price: @wine.BuyingPrice</li>
+                        <li>Remaining bottles: @wine.BottlesRemaining</li>
+                        <li>Vineyard: @wine.Vineyard</li>
+                        <li>Location: @wine.Location</li>
+                        <li><input type="text" value="@wine.TastingNotes"></li>
+                    </ul>
+                </p>
+                <p>
+                    <a class="btn btn-danger" asp-action="Details" asp-route-id="@wine.Id">Details</a>
+                </p>
+            </div>
+        </div>
+    </div>
+}
+</div>

@@ -26,8 +26,8 @@
         <label asp-for="@Model.Order.Status"></label>
         <select asp-for="@Model.Order.Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Order.Status" name="Model.Order.Status"></span>
     </div>
-    <input class="btn btn-primary" type="submit" name="save" value="Change status">
+    <input class="btn btn-danger" type="submit" name="save" value="Change status">
 </form>
 <hr>
 
-<a class="btn btn-primary" asp-action="Index">Back to orders</a>
+<a class="btn btn-danger" asp-action="Index">Back to orders</a>

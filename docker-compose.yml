@@ -1,0 +1,8 @@
+version: "3"
+services:
+    web:
+        restart: always
+        build: .
+        ports:
+            - "5000:8080"
+            - "5001:8081"

@@ -20,7 +20,7 @@
         <label asp-for="Status"></label>
         <select asp-for="Status" asp-items="@Html.GetEnumSelectList<OrderStatus>()"></select><span asp-validation-for="Status"></span>
     </div>
-    <input type="submit" name="save" class="btn btn-primary" value="Save">
+    <input type="submit" name="save" class="btn btn-danger" value="Save">
 </form>
 <hr>
-<a class="btn btn-primary" asp-action="Index">Back to list</a>
+<a class="btn btn-danger" asp-action="Index">Back to list</a>
